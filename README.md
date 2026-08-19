@@ -7,84 +7,48 @@ This project is being built as a hands-on Java/Spring Boot backend project, with
 Table of Contents
 
 1. Project Overview
-
 2. Problem Statement
-
 3. Actors
-
 4. Functional Requirements
-
 5. Core User Flows
-
 6. Domain Model
-
 7. Entity Relationships
-
 8. Database Entities
-
 9. Inventory Management
-
 10. Pricing
-
 11. Booking Lifecycle
-
 12. Hotel Search
-
 13. API Design
-
 14. Application Architecture
-
 15. Layer Responsibilities
-
 16. Important Design Considerations
-
 17. Technology Stack
-
 18. Project Modules
-
 19. Git Milestones
-
 20. Future Enhancements
-
 21. Current Project Status
 
 1. Project Overview
 
 The Airbnb Clone is a hotel booking and management system.
-
 The application has two primary sides:
 
-Guest / Customer side
-
-Search for hotels
-
-View hotel and room information
-
-Check room availability
-
-Create bookings
-
-Add guests to bookings
-
-Make payments
-
-View bookings
-
-Hotel Manager side
-
-Create hotels
-
-Update hotel information
-
-Manage room types
-
-Manage inventory
-
-Manage hotel-related information
-
-Admin functionality will be introduced in a later stage of the project.
-
-The initial application is designed as a monolithic Spring Boot application backed by PostgreSQL.
+* Guest / Customer side
+* Search for hotels
+* View hotel and room information
+* Check room availability
+* Create bookings
+* Add guests to bookings
+* Make payments
+* View bookings
+* Hotel Manager side
+* Create hotels
+* Update hotel information
+* Manage room types
+* Manage inventory
+* Manage hotel-related information
+* Admin functionality will be introduced in a later stage of the project.
+* The initial application is designed as a monolithic Spring Boot application backed by PostgreSQL.
 
 2. Problem Statement
 
@@ -94,29 +58,18 @@ At the same time, hotel managers need functionality to manage their hotels, room
 
 The system therefore needs to handle:
 
-User accounts
-
-Hotel management
-
-Room type management
-
-Date-specific inventory
-
-Hotel search
-
-Availability checking
-
-Booking management
-
-Guest management
-
-Payment processing
-
-Dynamic pricing
-
-Authentication and authorization
-
-Administrative operations
+* User accounts
+* Hotel management
+* Room type management
+* Date-specific inventory
+* Hotel search
+* Availability checking
+* Booking management
+* Guest management
+* Payment processing
+* Dynamic pricing
+* Authentication and authorization
+* Administrative operations
 
 3. Actors
 
@@ -124,55 +77,35 @@ Administrative operations
 
 A guest/user can:
 
-Sign up
-
-Log in
-
-Search for hotels
-
-View hotel details
-
-View room details
-
-Check room availability
-
-Create bookings
-
-Add guests to a booking
-
-Make payments
-
-View bookings
-
-Cancel bookings where applicable
+* Sign up
+* Log in
+* Search for hotels
+* View hotel details
+* View room details
+* Check room availability
+* Create bookings
+* Add guests to a booking
+* Make payments
+* View bookings
+* Cancel bookings where applicable
 
 3.2 Hotel Manager
 
-A hotel manager can:
-
-Create hotels
-
-Update hotel information
-
-Manage room types
-
-Add room types
-
-Update room information
-
-Delete room types
-
-Manage inventory
-
-Update availability for specific dates
-
-The course design uses the HOTEL_MANAGER role for hotel-management operations.
+* A hotel manager can:
+* Create hotels
+* Update hotel information
+* Manage room types
+* Add room types
+* Update room information
+* Delete room types
+* Manage inventory
+* Update availability for specific dates 
+* The course design uses the HOTEL_MANAGER role for hotel-management operations.
 
 3.3 Admin
 
-Admin functionality will be introduced during the final backend module.
-
-The exact admin operations will be defined when the Admin API module is implemented.
+* Admin functionality will be introduced during the final backend module.
+* The exact admin operations will be defined when the Admin API module is implemented.
 
 4. Functional Requirements
 
@@ -180,51 +113,35 @@ The exact admin operations will be defined when the Admin API module is implemen
 
 The system should support:
 
-User registration
-
-User login
-
-User verification
-
-User roles
+* User registration
+* User login
+* User verification
+* User roles
 
 The primary roles introduced in the design are:
-
-GUEST
-
-HOTEL_MANAGER
-
-Admin functionality will be added later.
+* GUEST
+* HOTEL_MANAGER
+* Admin functionality will be added later.
 
 4.2 Hotel Management
 
 Hotel managers should be able to:
 
-Create hotels
-
-Update hotel information
-
-Manage hotel status
-
-Manage hotel room types
-
-Manage inventory
+* Create hotels
+* Update hotel information
+* Manage hotel status
+* Manage hotel room types
+* Manage inventory
 
 A hotel contains information such as:
 
-City
-
-Contact information
-
-Photos
-
-Amenities
-
-Active status
-
-Creation timestamp
-
-Update timestamp
+* City
+* Contact information
+* Photos
+* Amenities
+* Active status
+* Creation timestamp
+* Update timestamp
 
 4.3 Room Management
 
@@ -242,93 +159,61 @@ The Room entity represents a room type/category rather than an individual physic
 
 Room information includes:
 
-Room type
-
-Base price
-
-Amenities
-
-Photos
-
-Total count
-
-Capacity
-
-Creation timestamp
-
-Update timestamp
+* Room type
+* Base price
+* Amenities
+* Photos
+* Total count
+* Capacity
+* Creation timestamp
+* Update timestamp
 
 4.4 Inventory Management
 
 Inventory represents the availability of a room type for a particular date.
-
 Inventory contains information such as:
 
-Hotel
-
-Room
-
-Date
-
-Booked count
-
-Total count
-
-Surge factor
-
-Closed status
-
-Creation timestamp
-
-Update timestamp
-
-Hotel managers can update inventory.
-
-The system can also initialize/manage inventory as part of the application workflow.
+* Hotel
+* Room
+* Date
+* Booked count
+* Total count
+* Surge factor
+* Closed status
+* Creation timestamp
+* Update timestamp
+* Hotel managers can update inventory.
+* The system can also initialize/manage inventory as part of the application workflow.
 
 4.5 Hotel Search
 
 Guests can search for hotels using parameters such as:
 
-City
-
-Check-in date
-
-Check-out date
-
-Number of rooms
-
-Search results are paginated.
+* City
+* Check-in date
+* Check-out date
+* Number of rooms
+* Search results are paginated.
 
 4.6 Booking
 
 A guest can:
 
-Search for a hotel
-
-Select a hotel
-
-Select a room type
-
-Check availability
-
-Create a booking
-
-Add guests
-
-Complete payment
-
-Receive booking confirmation
-
-View bookings
+* Search for a hotel
+* Select a hotel
+* Select a room type
+* Check availability
+* Create a booking
+* Add guests
+* Complete payment
+* Receive booking confirmation
+* View bookings
 
 4.7 Guest Management
 
-A user can maintain guest information.
-
-A booking can contain multiple guests.
-
-The relationship between a booking and guests is represented using the BookingGuest entity.
+* A user can maintain guest information.
+* A booking can contain multiple guests.
+* The relationship between a booking and guests is represented using the BookingGuest entity.
 
 4.8 Payment
 
@@ -336,17 +221,12 @@ Payment is associated with a booking.
 
 The payment domain contains information such as:
 
-Transaction ID
-
-Price
-
-Payment status
-
-Creation timestamp
-
-Update timestamp
-
-Stripe payment integration will be introduced in a later module.
+* Transaction ID
+* Price
+* Payment status
+* Creation timestamp
+* Update timestamp
+* Stripe payment integration will be introduced in a later module.
 
 5. Core User Flows
 
@@ -408,19 +288,13 @@ The initial domain model contains nine key entities:
 
 The current Week 1 design establishes the following relationships:
 
-User 1 ───── * Guest
-
-User 1 ───── * Booking
-
-Hotel 1 ───── 1 ContactInfo
-
-Hotel 1 ───── * Room
-
-Room 1 ───── * Inventory
-
-Booking 1 ───── 1 Payment
-
-Booking * ───── * Guest
+* User 1 ───── * Guest
+* User 1 ───── * Booking
+* Hotel 1 ───── 1 ContactInfo
+* Hotel 1 ───── * Room
+* Room 1 ───── * Inventory
+* Booking 1 ───── 1 Payment
+* Booking * ───── * Guest
 │
 BookingGuest
 
@@ -450,13 +324,10 @@ Hotel → ContactInfo
 
 A hotel has contact information containing details such as:
 
-Complete address
-
-Location
-
-Email
-
-Phone number
+* Complete address
+* Location
+* Email
+* Phone number
 
 Hotel → Room
 
@@ -481,25 +352,17 @@ Deluxe Room
 
 Booking → Payment
 
-The Week 1 design models one payment for one booking.
-
-Booking 1 ───── 1 Payment
-
-The payment implementation will be expanded when Stripe integration is introduced.
-
-Booking ↔ Guest
-
-A booking can contain multiple guests.
-
-A guest can appear in multiple bookings over time.
+* The Week 1 design models one payment for one booking.
+* Booking 1 ───── 1 Payment
+* The payment implementation will be expanded when Stripe integration is introduced.
+* Booking ↔ Guest
+* A booking can contain multiple guests.
+* A guest can appear in multiple bookings over time.
 
 Therefore, the relationship is represented as:
-
-Booking * ───── * Guest
-│
-BookingGuest
-
-BookingGuest acts as the junction entity.
+* Booking * ───── * Guest
+* BookingGuest
+* BookingGuest acts as the junction entity.
 
 8. Database Entities
 
@@ -509,11 +372,11 @@ The User entity represents an application account.
 
 Attributes:
 
-id
-roles
-name
-email
-password
+* id
+* roles
+* name
+* email
+* password
 
 8.2 Guest
 
@@ -521,11 +384,11 @@ The Guest entity represents guest information associated with a user.
 
 Attributes:
 
-id
-userId
-name
-createdAt
-gender
+* id
+* userId
+* name
+* createdAt
+* gender
 
 8.3 Hotel
 
@@ -533,14 +396,14 @@ The Hotel entity represents a hotel managed through the application.
 
 Attributes:
 
-id
-city
-contactInfo
-photos
-createdAt
-updatedAt
-amenities
-active
+* id
+* city
+* contactInfo
+* photos
+* createdAt
+* updatedAt
+* amenities
+* active
 
 8.4 ContactInfo
 
@@ -548,11 +411,11 @@ ContactInfo contains hotel contact and location information.
 
 Attributes:
 
-id
-completeAddress
-location
-email
-phoneNumber
+* id
+* completeAddress
+* location
+* email
+* phoneNumber
 
 8.5 Room
 
@@ -560,16 +423,16 @@ Room represents a room type/category within a hotel.
 
 Attributes:
 
-id
-hotelId
-type
-basePrice
-createdAt
-updatedAt
-amenities
-photos
-totalCount
-capacity
+* id
+* hotelId
+* type
+* basePrice
+* createdAt
+* updatedAt
+* amenities
+* photos
+* totalCount
+* capacity
 
 8.6 Inventory
 
@@ -577,16 +440,16 @@ Inventory represents date-specific room availability and pricing information.
 
 Attributes:
 
-id
-hotelId
-roomId
-date
-bookedCount
-totalCount
-createdAt
-updatedAt
-surgeFactor
-closed
+* id
+* hotelId
+* roomId
+* date
+* bookedCount
+* totalCount
+* createdAt
+* updatedAt
+* surgeFactor
+* closed
 
 8.7 Booking
 
@@ -594,16 +457,16 @@ Booking represents a reservation created by a user.
 
 Attributes:
 
-id
-hotelId
-roomId
-userId
-createdAt
-updatedAt
-status
-checkInDate
-checkoutDate
-paymentId
+* id
+* hotelId
+* roomId
+* userId
+* createdAt
+* updatedAt
+* status
+* checkInDate
+* checkoutDate
+* paymentId
 
 8.8 BookingGuest
 
@@ -611,9 +474,9 @@ BookingGuest connects bookings with guests.
 
 Attributes:
 
-id
-bookingId
-guestId
+* id
+* bookingId
+* guestId
 
 8.9 Payment
 
@@ -621,12 +484,12 @@ Payment represents the payment associated with a booking.
 
 Attributes:
 
-id
-transactionId
-price
-createdAt
-updatedAt
-status
+* id
+* transactionId
+* price
+* createdAt
+* updatedAt
+* status
 
 9. Inventory Management
 
@@ -765,19 +628,13 @@ Search results are paginated.
 
 Why Pagination?
 
-Returning a very large number of hotels in one response can result in:
-
-Larger response payloads
-
-Increased network transfer
-
-More data processing
-
-Higher memory usage
-
-Slower response handling
-
-Pagination allows the client to request a limited set of results.
+* Returning a very large number of hotels in one response can result in:
+* Larger response payloads
+* Increased network transfer
+* More data processing
+* Higher memory usage
+* Slower response handling
+* Pagination allows the client to request a limited set of results.
 
 Conceptually:
 
@@ -1104,120 +961,79 @@ Contains:
 
 Project foundation
 
-Week 1 requirements
-
-Domain understanding
-
-Entity relationships
-
-API design
-
+Week 1 requirements: 
+Domain understanding,
+Entity relationships,
+API design,
 Architecture documentation
 
 Commit 2 — Schema / Entities
 
 Contains:
-
-JPA entities
-
-Entity relationships
-
-Database schema
-
+JPA entities,
+Entity relationships,
+Database schema,
 PostgreSQL integration
 
 Commit 3 — Hotel Manager APIs
 
 Contains:
-
-Hotel APIs
-
-Room APIs
-
+Hotel APIs,
+Room APIs,
 Inventory management APIs
 
 Commit 4 — Search / Booking
 
 Contains:
-
 Hotel search
-
 Availability
-
 Booking creation
-
 Booking management
 
 Commit 5 — Dynamic Pricing / Scheduling
 
 Contains:
-
 Dynamic pricing
-
 Pricing strategies
-
 Scheduling functionality
 
 Commit 6 — Authentication / Authorization
 
 Contains:
-
 Spring Security
-
 Authentication
-
 JWT
-
 Roles
-
 Authorization
 
 Commit 7 — Testing / Stripe / Final Backend
-
 Contains:
-
 Testing
-
 Stripe payment integration
-
 Refund functionality
-
 Final backend/admin functionality
 
 Commit 8 — React UI
 
 Contains:
-
 React frontend
-
 Backend integration
-
 UI changes
-
 Final frontend updates
 
 20. Future Enhancements
 
 The initial project is intentionally implemented as a monolithic Spring Boot application.
-
 Potential future architectural improvements can be evaluated after the core system is complete, including:
 
 Microservices
-
 Caching
-
 Messaging
-
 Improved scalability
-
 Additional search capabilities
-
 More advanced payment handling
-
 Improved observability
-
 Production deployment improvements
-
 These are not part of the initial Week 1 implementation unless introduced by a later project module.
 
 21. Current Project Status
@@ -1302,3 +1118,7 @@ CI/CD
 React integration
 
 Each major feature will be implemented with an emphasis on understanding why the design and implementation are used, rather than blindly reproducing tutorial code.
+
+![img.png](img.png)
+
+![img_1.png](img_1.png)

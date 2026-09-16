@@ -26,7 +26,7 @@ public class Room {
     private String type;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    private BigDecimal basePrice;
 
     @Column(columnDefinition = "Text[]")
     private String[] photos;

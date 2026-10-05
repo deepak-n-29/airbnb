@@ -1,7 +1,10 @@
 package com.deepak.airbnb.entity.enums;
 
 public enum BookingStatus {
-    Reserved,
-    Confirmed,
-    Cancelled
+    RESERVED,
+    GUESTS_ADDED,
+    PAYMENTS_PENDING,
+    CONFIRMED,
+    CANCELLED,
+    EXPIRED
 }

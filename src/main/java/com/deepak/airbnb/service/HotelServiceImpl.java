@@ -1,15 +1,20 @@
 package com.deepak.airbnb.service;
 
 import com.deepak.airbnb.dto.HotelDto;
+import com.deepak.airbnb.dto.HotelInfoDto;
+import com.deepak.airbnb.dto.RoomDto;
 import com.deepak.airbnb.entity.Hotel;
 import com.deepak.airbnb.entity.Room;
 import com.deepak.airbnb.exception.ResourceNotFoundException;
 import com.deepak.airbnb.repository.HotelRepository;
+import com.deepak.airbnb.repository.RoomRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -19,6 +24,7 @@ public class HotelServiceImpl implements HotelService {
     private final HotelRepository hotelRepository;
     private final ModelMapper modelMapper;
     private final InventoryService inventoryService;
+    private final RoomRepository roomRepository;
 
     @Override
     public HotelDto createNewHotel(HotelDto hotelDto) {
@@ -59,7 +65,9 @@ public class HotelServiceImpl implements HotelService {
                 .orElseThrow(() -> new ResourceNotFoundException("Hotel not found with ID: " + id));
 
         for(Room room: hotel.getRooms()) {
-            inventoryService.deleteFutureInventories(room);
+            inventoryService.deleteAllInventories(room);
+            roomRepository.deleteById(hotel.getId());
+
         }
         hotelRepository.deleteById(id);
     }
@@ -78,5 +86,18 @@ public class HotelServiceImpl implements HotelService {
         }
         hotelRepository.save(hotel);
 
+    }
+
+    @Override
+    public HotelInfoDto getHotelInfoById(Long hotelId) {
+        Hotel hotel = hotelRepository.findById(hotelId)
+                .orElseThrow(() -> new ResourceNotFoundException("Hotel not found with ID: "+hotelId));
+
+        List<RoomDto> rooms = hotel.getRooms()
+                .stream()
+                .map((element) -> modelMapper.map(element, RoomDto.class))
+                .toList();
+
+        return new HotelInfoDto(modelMapper.map(hotel, HotelDto.class), rooms);
     }
 }

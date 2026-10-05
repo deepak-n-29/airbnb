@@ -1,7 +1,10 @@
 package com.deepak.airbnb.service;
 
 import com.deepak.airbnb.dto.HotelDto;
+import com.deepak.airbnb.dto.HotelInfoDto;
 import com.deepak.airbnb.entity.Hotel;
+
+import java.util.List;
 
 public interface HotelService {
 
@@ -13,5 +16,5 @@ public interface HotelService {
     void activateHotelById(Long id);
 
 
-
+    HotelInfoDto getHotelInfoById(Long hotelId);
 }

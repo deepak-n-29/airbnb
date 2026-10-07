@@ -2,6 +2,7 @@ package com.deepak.airbnb.controller;
 
 import com.deepak.airbnb.dto.HotelDto;
 import com.deepak.airbnb.dto.HotelInfoDto;
+import com.deepak.airbnb.dto.HotelPriceDto;
 import com.deepak.airbnb.dto.HotelSearchRequest;
 import com.deepak.airbnb.service.HotelService;
 import com.deepak.airbnb.service.InventoryService;
@@ -19,8 +20,8 @@ public class HotelBrowseController {
     private final HotelService hotelService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<HotelDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest){
-        Page<HotelDto> page = inventoryService.searchHotels(hotelSearchRequest);
+    public ResponseEntity<Page<HotelPriceDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest){
+        Page<HotelPriceDto> page = inventoryService.searchHotels(hotelSearchRequest);
         return ResponseEntity.ok(page);
     }
 
